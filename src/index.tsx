@@ -8,7 +8,6 @@ const App = () => {
   const ref = useRef<any>()
   const iframe = useRef<any>()
   const [input, setInput] = useState('')
-  const [code, setCode] = useState('')
 
   const startService = async() => {
     ref.current = await esbuild.startService({ //Creating a reference to the service we created through esbuild
@@ -75,8 +74,7 @@ const App = () => {
     <div>
       <button onClick={onClick}>Submit</button>
     </div>
-    <pre>{code}</pre>
-    <iframe ref={iframe} srcDoc={html} sandbox='allow-scripts'/>
+    <iframe title="preview" ref={iframe} srcDoc={html} sandbox='allow-scripts'/>
   </div>
   )
 }
