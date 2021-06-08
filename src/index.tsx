@@ -6,6 +6,7 @@ import { fetchPlugin } from './plugins/fetch-plugin'
 
 const App = () => {
   const ref = useRef<any>()
+  const iframe = useRef<any>()
   const [input, setInput] = useState('')
   const [code, setCode] = useState('')
 
@@ -39,8 +40,26 @@ const App = () => {
       }
     })
 
-    setCode(result.outputFiles[0].text)
+
+    // setCode(result.outputFiles[0].text)
+    iframe.current.contentWindow.postMessage(result.outputFiles[0].text, '*')
   }
+
+  // Passing code to the IFrame
+  const html = `
+  <html>
+    <head></head>
+    <body>
+      <div id='root'></div>
+      <script>
+        window.addEventListener('message', (event) => {
+          eval(event.data)
+        }, false)
+      </script>
+    </body>
+  </html>
+
+  `
 
   return ( 
   <div>
@@ -49,6 +68,7 @@ const App = () => {
       <button onClick={onClick}>Submit</button>
     </div>
     <pre>{code}</pre>
+    <iframe ref={iframe} srcDoc={html} sandbox='allow-scripts'/>
   </div>
   )
 }
