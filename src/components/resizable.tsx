@@ -32,7 +32,7 @@ const Resizable: React.FC<ResizableProps> = ({ direction, children }) => {
     return () => {
       window.removeEventListener('resize', listener);
     };
-  });
+  }, [width]);
 
   switch (direction) {
     case 'horizontal':
