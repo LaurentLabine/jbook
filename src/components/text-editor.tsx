@@ -13,10 +13,8 @@ const TextEditor: React.FC = () => {
         event.target &&
         ref.current.contains(event.target as Node)
       ) {
-        console.log('element clicked on is inside editor');
         return;
       }
-      console.log('Not inside');
 
       setEditing(false);
     };
@@ -29,7 +27,7 @@ const TextEditor: React.FC = () => {
 
   if (editing) {
     return (
-      <div ref={ref}>
+      <div className="text-editor" ref={ref}>
         <MDEditor />
       </div>
     );
