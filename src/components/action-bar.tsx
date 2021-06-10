@@ -1,4 +1,4 @@
-import { useActions } from '../hooks/use-action';
+import { useActions } from '../hooks/use-actions';
 import ActionButton from './action-button';
 import './action-bar.css';
 

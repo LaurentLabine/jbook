@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import MDEditor from '@uiw/react-md-editor';
 import './text-editor.css';
 import { Cell } from '../state';
-import { useActions } from '../hooks/use-action';
+import { useActions } from '../hooks/use-actions';
 
 interface TextEditorProps {
   cell: Cell;
