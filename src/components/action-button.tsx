@@ -1,6 +1,8 @@
+import { MouseEventHandler } from 'react';
+
 interface ActionButtonProps {
   icon: string;
-  action: any;
+  action: MouseEventHandler<HTMLButtonElement>; //Todo : Figure type out.
 }
 
 const ActionButton: React.FC<ActionButtonProps> = ({ icon, action }) => {
